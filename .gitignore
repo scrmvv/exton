@@ -1,0 +1,17 @@
+# IDE
+.vscode/
+.idea/
+
+# Системные
+.DS_Store
+Thumbs.db
+
+# На будущее
+node_modules/
+vendor/
+
+# Логи
+*.log
+
+# Локальный конфиг с паролями
+config.php
