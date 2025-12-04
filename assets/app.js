@@ -4,7 +4,6 @@ const sortHidden = document.getElementById('sort');
 const sortButtons = document.querySelectorAll('.sort-pill-group .btn');
 const searchBtn = document.getElementById('searchBtn');
 
-// Переключение сортировки
 sortButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     sortButtons.forEach(b => b.classList.remove('active'));
