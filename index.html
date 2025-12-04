@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>ООО НПФ «Экситон-автоматика»</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg border-bottom border-secondary-subtle" style="background: rgba(15,23,42,0.95);">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <span class="fw-bold">ООО НПФ «Экситон-автоматика»</span>
+      <span class="brand-highlight text-secondary">Поиск оборудования</span>
+    </a>
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge-soft badge-soft-warning">by scrmvv</span>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4 py-md-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <div class="card card-outer shadow-lg border-0">
+        <div class="card-main p-3 p-md-4 p-lg-5">
+          <div class="row g-4 align-items-center mb-4 mb-lg-5">
+            <div class="col-12 col-lg-7">
+              <div class="mb-2 d-flex align-items-center gap-2">
+                <span class="badge-soft">
+                  <i class="bi bi-lightning-charge"></i> Подбор по поставщикам
+                </span>
+                <span class="badge-soft">
+                  <i class="bi bi-currency-ruble"></i> Цены без / с НДС
+                </span>
+              </div>
+              <h1 class="h3 h-lg2 mb-2">
+                Быстрый подбор оборудования<br class="d-none d-md-inline">
+                <span class="text-info">по нескольким поставщикам</span>
+              </h1>
+              <p class="mb-3 text-secondary">
+                Введите артикул или часть названия — система найдёт всех поставщиков,
+                посчитает минимальную цену и покажет разбивку по количеству и срокам.
+              </p>
+              <div class="hero-kpi d-flex flex-wrap gap-3">
+                <div>
+                  <span>Поставщики</span><br>
+                  <strong>26</strong>
+                </div>
+                <div>
+                  <span>Позиций в базе</span><br>
+                  <strong>127+</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-5">
+              <div class="border border-secondary rounded-4 p-3 p-md-4 bg-black bg-opacity-25">
+                <form class="row g-3" id="searchForm">
+                  <div class="col-12">
+                    <label for="q" class="form-label">Что ищем</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control search-pill"
+                        id="q"
+                        name="q"
+                        placeholder="Например: R5ST или «Короб»"
+                        required
+                      >
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <label for="qty" class="form-label">Количество, шт</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm search-pill"
+                      id="qty"
+                      name="qty"
+                      min="1"
+                      value="10"
+                    >
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label">Сортировка</label>
+                    <div class="btn-group sort-pill-group w-100" role="group" aria-label="Сортировка">
+                      <button type="button" class="btn btn-outline-light btn-sm active" data-sort="price">
+                        Цена
+                      </button>
+                      <button type="button" class="btn btn-outline-light btn-sm" data-sort="lead_time">
+                        Срок
+                      </button>
+                    </div>
+                    <input type="hidden" id="sort" name="sort" value="price">
+                  </div>
+                  <div class="col-12 pt-2 d-grid">
+                    <button type="submit" class="btn btn-gradient" id="searchBtn">
+                      <span class="me-1"><i class="bi bi-play-fill"></i></span>
+                      Найти варианты
+                    </button>
+                  </div>
+                  <div class="col-12">
+                    <small class="text-secondary">
+                      Для точного расчёта по поставщикам лучше использовать артикул.
+                    </small>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div id="results" class="mt-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="assets/bootstrap.bundle.js"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>
