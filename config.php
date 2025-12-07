@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'test';
+$db   = 'equipment_aggregator';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
