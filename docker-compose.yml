@@ -31,7 +31,9 @@ services:
       - "3307:3306"
 
   semantic:
-    build: ./docker/semantic
+    build:
+      context: .                     
+      dockerfile: docker/semantic/Dockerfile
     container_name: exton_semantic
     environment:
       DB_HOST: db
