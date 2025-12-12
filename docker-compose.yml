@@ -43,7 +43,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./semantic_search_service.py:/app/semantic_search_service.py
+      - ./semantic_service.py:/app/semantic_service.py
 
 volumes:
   db_data:
