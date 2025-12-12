@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  web:
+    build: ./docker/php
+    container_name: exton_web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_NAME: equipment_aggregator
+      DB_USER: root
+      DB_PASS: example
+      SEMANTIC_URL: http://semantic:8000
+    depends_on:
+      - db
+      - semantic
+
+  db:
+    image: mysql:8.0
+    container_name: exton_db
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: equipment_aggregator
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
+    ports:
+      - "3307:3306"
+
+  semantic:
+    build: ./docker/semantic
+    container_name: exton_semantic
+    environment:
+      DB_HOST: db
+      DB_NAME: equipment_aggregator
+      DB_USER: root
+      DB_PASS: example
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./semantic_search_service.py:/app/semantic_search_service.py
+
+volumes:
+  db_data:

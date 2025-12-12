@@ -4,9 +4,10 @@ header('Content-Type: application/json; charset=utf-8');
 require __DIR__ . '/config.php';
 
 # вызываем нейронку
+define('SEMANTIC_BASE_URL', getenv('SEMANTIC_URL') ?: 'http://127.0.0.1:8000');
 function call_semantic_search(string $query, int $topK = 20): array
 {
-    $url = 'http://127.0.0.1:8000/search?q=' . urlencode($query) . '&top_k=' . $topK;
+    $url = SEMANTIC_BASE_URL . '/search?q=' . urlencode($query) . '&top_k=' . $topK;
 
     $context = stream_context_create([
         'http' => [
@@ -30,7 +31,6 @@ function call_semantic_search(string $query, int $topK = 20): array
             $ids[] = (int)$row['id'];
         }
     }
-
     return array_values(array_unique($ids));
 }
 

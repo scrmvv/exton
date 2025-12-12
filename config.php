@@ -1,20 +1,11 @@
 <?php
-$host = 'localhost';
-$db   = 'equipment_aggregator';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+$dbHost = getenv('DB_HOST') ?: '127.0.0.1';
+$dbName = getenv('DB_NAME') ?: 'equipment_aggregator';
+$dbUser = getenv('DB_USER') ?: 'root';
+$dbPass = getenv('DB_PASS') ?: '';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
+$dsn = "mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4";
 
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Ошибка подключения к БД']);
-    exit;
-}
+$pdo = new PDO($dsn, $dbUser, $dbPass, [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+]);

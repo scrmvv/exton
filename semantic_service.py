@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import mysql.connector
 from fastapi import FastAPI, Query
@@ -5,10 +6,10 @@ from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
 
 DB_CONFIG = dict(
-    host="localhost",
-    user="root",
-    password="",
-    database="equipment_aggregator",
+    host=os.environ.get("DB_HOST", "localhost"),
+    user=os.environ.get("DB_USER", "root"),
+    password=os.environ.get("DB_PASS", ""),
+    database=os.environ.get("DB_NAME", "equipment_aggregator"),
 )
 
 MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
